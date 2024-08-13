@@ -10,7 +10,6 @@ int main(void)
 
         while (1)
         {
-                write(STDOUT_FILENO, "OurShell$ ", 10);
 		buf = NULL;
 
                 nread = getline(&buf, &count, stdin);
