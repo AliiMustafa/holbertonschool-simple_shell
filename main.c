@@ -1,5 +1,5 @@
 #include "main.h"
-int main(int argc, char **argv)
+int main(void)
 {
         char *buf, *token;
         size_t count = 0;
