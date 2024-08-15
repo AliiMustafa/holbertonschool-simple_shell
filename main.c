@@ -16,7 +16,7 @@ int main(void)
 
                 if (nread ==  -1)
                 {
-                        exit(1);
+                        exit(0);
                 }
                 token = strtok(buf, " \n");
                 commands = malloc(sizeof(char*) * 1024);
