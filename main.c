@@ -16,7 +16,6 @@ int main(void)
 
                 if (nread ==  -1)
                 {
-                        perror("Exitting shell");
                         exit(1);
                 }
                 token = strtok(buf, " \n");
