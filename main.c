@@ -23,6 +23,7 @@ int main(void)
                 commands = malloc(sizeof(char*) * 1024);
 		if (commands == NULL)
 		{
+			free(buf);
 			perror("Malloc fail");
 			exit(1);
 		}
@@ -46,6 +47,8 @@ int main(void)
                 {
                         if (execve(commands[0], commands, NULL) == -1)
                         {
+				free(buf);
+				free(commands);
                                 perror("Failed to execute");
                                 exit(97);
                         }
