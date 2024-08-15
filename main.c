@@ -21,6 +21,7 @@ int main(void)
                 }
                 token = strtok(buf, " \n");
                 commands = malloc(sizeof(char*) * 1024);
+		i = 0;
                 while (token)
                 {
                         commands[i] = token;
@@ -44,7 +45,8 @@ int main(void)
 			exit(1);
 
                 }
-                wait(&status);
+		else
+                	wait(&status);
         }
         free(buf);
         return (0);
