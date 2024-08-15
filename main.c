@@ -33,20 +33,17 @@ int main(void)
                 if (child == -1)
                 {
                         perror("Exitting shell");
-			exit(41);
+			exit(EXIT_FAILURE);
                 }
-                if (child == 0)
+		else if (child == 0)
                 {
                         if (execve(commands[0], commands, NULL) == -1)
                         {
                                 perror("Failed to execute");
                                 exit(97);
                         }
-			exit(1);
-
-                }
-		else
                 	wait(&status);
+		}
         }
         free(buf);
         return (0);
