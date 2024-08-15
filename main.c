@@ -20,7 +20,7 @@ int main(void)
                         exit(0);
                 }
                 token = strtok(buf, " \n");
-                commands = malloc(sizeof(char*) * 1024);
+                commands = malloc(sizeof(char) * 1024);
 		if (commands == NULL)
 		{
 			free(buf);
