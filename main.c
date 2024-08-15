@@ -32,7 +32,7 @@ int main(void)
                 child = fork();
                 if (child == -1)
                 {
-                        perror("Exitting shell");
+                        perror("Fork failed");
 			exit(EXIT_FAILURE);
                 }
 		else if (child == 0)
