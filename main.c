@@ -5,7 +5,7 @@ int main(void)
         size_t count = 0;
         ssize_t nread;
         pid_t child;
-        char **commands;
+        char *commands[100];
 	int i, status;
 
         while (1)
@@ -20,13 +20,6 @@ int main(void)
                         exit(0);
                 }
                 token = strtok(buf, " \n");
-                commands = malloc(sizeof(char) * 1024);
-		if (commands == NULL)
-		{
-			free(buf);
-			perror("Malloc fail");
-			exit(1);
-		}
 		i = 0;
                 while (token)
                 {
@@ -39,7 +32,6 @@ int main(void)
                 if (child == -1)
                 {
 			free(buf);
-			free(commands);
                         perror("Fork failed");
 			exit(EXIT_FAILURE);
                 }
@@ -48,7 +40,6 @@ int main(void)
                         if (execve(commands[0], commands, NULL) == -1)
                         {
 				free(buf);
-				free(commands);
                                 perror("Failed to execute");
                                 exit(97);
                         }
@@ -59,13 +50,11 @@ int main(void)
 			if (wait(&status) == -1)
 			{
 				free(buf);
-				free(commands);
 				perror("Wait failed");
 				exit(EXIT_FAILURE);
 			}
 		}
         }
-	free(commands);
         free(buf);
         return (0);
 }
