@@ -43,6 +43,7 @@ int main(void)
                                 perror("Failed to execute");
                                 exit(97);
                         }
+			free(buf);
 		}
 		else
 		{
