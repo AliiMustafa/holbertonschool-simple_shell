@@ -54,6 +54,16 @@ int main(void)
                         }
                 	wait(&status);
 		}
+		else
+		{
+			if (wait(&status) == -1)
+			{
+				free(buf);
+				free(commands);
+				perror("Wait failed");
+				exit(EXIT_FAILURE);
+			}
+		}
         }
 	free(commands);
         free(buf);
