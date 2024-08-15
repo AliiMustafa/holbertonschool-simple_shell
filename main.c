@@ -16,10 +16,16 @@ int main(void)
 
                 if (nread ==  -1)
                 {
+			free(buf);
                         exit(0);
                 }
                 token = strtok(buf, " \n");
                 commands = malloc(sizeof(char*) * 1024);
+		if (commands == NULL)
+		{
+			perror("Malloc fail");
+			exit(1);
+		}
 		i = 0;
                 while (token)
                 {
@@ -31,6 +37,8 @@ int main(void)
                 child = fork();
                 if (child == -1)
                 {
+			free(buf);
+			free(commands);
                         perror("Fork failed");
 			exit(EXIT_FAILURE);
                 }
@@ -44,6 +52,7 @@ int main(void)
                 	wait(&status);
 		}
         }
+	free(commands);
         free(buf);
         return (0);
 }
