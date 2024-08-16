@@ -54,6 +54,7 @@ int main(void)
 				exit(EXIT_FAILURE);
 			}
 		}
+	}
         free(buf);
         return (0);
 }
