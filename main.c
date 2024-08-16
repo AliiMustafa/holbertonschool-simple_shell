@@ -8,8 +8,6 @@ int main(void)
         char *commands[100];
 	int i, status;
 
-        while (1)
-        {
 		buf = NULL;
 
                 nread = getline(&buf, &count, stdin);
@@ -43,7 +41,6 @@ int main(void)
                                 perror("Failed to execute");
                                 exit(97);
                         }
-			free(buf);
 		}
 		else
 		{
@@ -54,7 +51,6 @@ int main(void)
 				exit(EXIT_FAILURE);
 			}
 		}
-        }
         free(buf);
         return (0);
 }
