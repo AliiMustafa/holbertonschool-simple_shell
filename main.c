@@ -6,14 +6,17 @@ int main(void)
         ssize_t nread;
         pid_t child;
         char *commands[100];
-	int i, status;
+	int i, status, f = 1;
 
+	while (f)
+	{
 		buf = NULL;
 
                 nread = getline(&buf, &count, stdin);
 
                 if (nread ==  -1)
                 {
+			f = 0;
 			free(buf);
                         exit(0);
                 }
