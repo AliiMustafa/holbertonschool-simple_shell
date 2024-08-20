@@ -1,6 +1,4 @@
 #include "main.h"
-int main(void)
-
 extern char **environ;
 
 int main(void)
