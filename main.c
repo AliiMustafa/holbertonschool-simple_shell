@@ -31,7 +31,7 @@ int main(void)
 		else if (child == 0)
 		{
 			if (execve(commands[0], commands, NULL) == -1)
-				free(buf), perror("Failed to execute"), exit(97);
+				free(buf), exit(97);
 		}
 		else
 		{
