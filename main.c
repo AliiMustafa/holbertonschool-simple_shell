@@ -31,7 +31,7 @@ int main(void)
 		else if (child == 0)
 		{
 			if (execve(commands[0], commands, NULL) == -1)
-				free(buf), fprintf(stderr, "./hsh: 1: %s: not found\n", commands[0]), exit(EXIT_FAILURE);
+				free(buf), exit(EXIT_FAILURE);
 		}
 		else
 		{
