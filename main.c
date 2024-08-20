@@ -52,10 +52,10 @@ int main(void)
 				free(buf);
 				perror("Wait failed");
 				exit(EXIT_FAILURE);
-			}
+			} 
 		}
+		 free(buf);
 	}
-        free(buf);
         return (0);
 }
 
