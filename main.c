@@ -1,4 +1,4 @@
-#include "main.h"
+i#include "main.h"
 int main(void)
 {
 	char *buf, *token;
