@@ -22,6 +22,9 @@ int main(void)
             exit(EXIT_SUCCESS);
         }
 
+        // Remove trailing newline if present
+        buf[strcspn(buf, "\n")] = '\0';
+
         token = strtok(buf, " \n");
         i = 0;
         while (token)
