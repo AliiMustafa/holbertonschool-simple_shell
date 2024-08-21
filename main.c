@@ -1,61 +1,67 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
+
 int main(void)
 {
-	char *buf, *token;
-	size_t count = 0;
-	ssize_t nread;
-	pid_t child;
-	char *commands[100];
-	int i, status, f = 1;
+    char *buf = NULL, *token, *commands[100];
+    size_t count = 0;
+    ssize_t nread;
+    pid_t child;
+    int i, status;
+    int f = 1;
 
-	while (f)
-	{
-		buf = NULL;
+    while (f)
+    {
+        buf = NULL;
+        nread = getline(&buf, &count, stdin);
+        if (nread == -1)
+        {
+            free(buf);
+            exit(0);
+        }
 
-		nread = getline(&buf, &count, stdin);
+        token = strtok(buf, " \n");
+        i = 0;
+        while (token)
+        {
+            commands[i] = token;
+            token = strtok(NULL, " \n");
+            i++;
+        }
+        commands[i] = NULL;
 
-		if (nread ==  -1)
-		{
-			f = 0;
-			free(buf);
-                        exit(0);
-                }
-                token = strtok(buf, " \n");
-		i = 0;
-                while (token)
-                {
-                        commands[i] = token;
-                        token = strtok(NULL, " \n");
-                        i++;
-                }
-                commands[i] = NULL;
-                child = fork();
-                if (child == -1)
-                {
-			free(buf);
-                        perror("Fork failed");
-			exit(EXIT_FAILURE);
-                }
-		else if (child == 0)
-                {
-                        if (execve(commands[0], commands, NULL) == -1)
-                        {
-				free(buf);
-                                perror("Failed to execute");
-                                exit(97);
-                        }
-		}
-		else
-		{
-			if (wait(&status) == -1)
-			{
-				free(buf);
-				perror("Wait failed");
-				exit(EXIT_FAILURE);
-			} 
-		}
-		 free(buf);
-	}
-        return (0);
+        child = fork();
+        if (child == -1)
+        {
+            perror("Fork failed");
+            free(buf);
+            exit(EXIT_FAILURE);
+        }
+        else if (child == 0)
+        {
+            if (execve(commands[0], commands, NULL) == -1)
+            {
+                perror("Execution failed");
+                free(buf);
+                exit(EXIT_FAILURE);
+            }
+        }
+        else
+        {
+            if (wait(&status) == -1)
+            {
+                perror("Wait failed");
+                free(buf);
+                exit(EXIT_FAILURE);
+            }
+        }
+        free(buf);
+    }
+
+    return 0;
 }
 
