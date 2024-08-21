@@ -53,8 +53,10 @@ int main(void)
                 free(buf);
                 exit(EXIT_FAILURE);
             }
+	    	free(buf);
+                buf = NULL;
         }
-        free(buf);
+
     }
 
     return 0;
