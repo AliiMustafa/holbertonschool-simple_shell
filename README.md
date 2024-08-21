@@ -46,7 +46,7 @@ For more information on available commands and options, refer to the [man page](
 
 ## Flowchart
 
-![alt text](https://github.com/kamurano/holbertonschool-simple_shell/blob/main/img/shell.drawio.png)
+![alt text](https://github.com/user-attachments/assets/b8acdf0c-82e2-4047-a756-b40d71c00665)
 
 ## Contributing
 
