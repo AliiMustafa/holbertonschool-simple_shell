@@ -29,14 +29,17 @@ char *_strcat(char *str1, char *str2)
  */
 char *handle_path(char *command)
 {
-	char *direc, *token, *d;
+	char *direc, *token, *d, *c;
 
 	if (access(command, X_OK) == 0)
-		return (command);
+	{
+		c = malloc(sizeof(char) * (strlen(command) + 1));
+		strcpy(c, command);
+		return (c);
+	}
 	command = _strcat("/", command);
 	if (!command)
 	{
-		free(command);
 		perror("Failed to concat");
 		exit(EXIT_FAILURE);
 	}
@@ -59,8 +62,10 @@ char *handle_path(char *command)
 			free(command);
 			return (token);
 		}
+		free(token);
 		token = strtok(NULL, ":");
 	}
+	free(command);
 	free(d);
 	token = "N_F";
 	return (token);

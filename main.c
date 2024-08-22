@@ -37,17 +37,18 @@ int main(void)
 		}
 		child = fork();
 		if (child == -1)
-			free(buf), perror("Fork failed"), exit(EXIT_FAILURE);
+			free(path), free(buf), perror("Fork failed"), exit(EXIT_FAILURE);
 		else if (child == 0)
 		{
 			if (execve(path, commands, NULL) == -1)
-				free(buf), perror("we found error"), exit(0);
+				free(path), free(buf), perror("we found error"), exit(0);
 		}
 		else
 		{
 			if (wait(&status) == -1)
-				free(buf), perror("wait has failed"), exit(0);
+				free(path), free(buf), perror("wait has failed"), exit(0);
 		}
+		free(path);
 		free(buf);
 	}
 
