@@ -30,10 +30,11 @@ int main(void)
 		}
 		commands[i] = NULL;
 		path = handle_path(commands[0]);
-		if (strcmp(path, "N_F") == 0)
+		 if (strcmp(path, "N_F") == 0)
 		{
+			fprintf(stderr, "./hsh: 1: %s: not found\n", commands[0]);
 			free(buf);
-			continue;
+			exit(127);
 		}
 		child = fork();
 		if (child == -1)
