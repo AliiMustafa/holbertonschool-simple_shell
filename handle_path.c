@@ -29,7 +29,7 @@ char *_strcat(char *str1, char *str2)
  */
 char *handle_path(char *command)
 {
-	char *direc, *token, *d, *c, *command1;
+	char *direc, *token, *d, *c, *command1, *temp;
 
 	if (access(command, X_OK) == 0)
 	{
@@ -48,7 +48,6 @@ char *handle_path(char *command)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
 		free(command1);
-		free(direc);
 		exit(127);
 	}
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
@@ -64,22 +63,17 @@ char *handle_path(char *command)
 	token = strtok(d, ":");
 	while (token)
 	{
-		token = _strcat(token, command1);
-		if (access(token, X_OK) == 0)
+		temp = _strcat(token, command1);
+		if (access(temp, X_OK) == 0)
 		{
 			free(d);
 			free(command1);
 			return (token);
 		}
-		free(token);
+		free(temp);
 		token = strtok(NULL, ":");
 	}
 	free(command1);
 	free(d);
-	token = "N_F";
-	return (token);
+	return ("N_F");
 }
-
-		
-
-
