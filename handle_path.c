@@ -43,7 +43,7 @@ char *handle_path(char *command)
 		perror("Failed to concat");
 		exit(EXIT_FAILURE);
 	}
-	direc = get_env("PATH");
+	direc = get_env("PATH", command);
 	if (!direc)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
