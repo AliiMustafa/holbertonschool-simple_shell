@@ -51,6 +51,7 @@ char *handle_path(char *command)
 			return (token);
 		token = strtok(NULL, ":");
 	}
+	free(d);
 	token = "N_F";
 	return (token);
 }
