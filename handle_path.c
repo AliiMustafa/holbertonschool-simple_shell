@@ -48,6 +48,7 @@ char *handle_path(char *command)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
 		free(command1);
+		free(direc);
 		exit(127);
 	}
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
