@@ -30,8 +30,9 @@ int main(void)
 		}
 		commands[i] = NULL;
 		path = handle_path(commands[0]);
-		if (!strcmp(path, "N_F"))
+		if (strcmp(path, "N_F") == 0)
 		{
+			free(buf);
 			continue;
 		}
 		child = fork();

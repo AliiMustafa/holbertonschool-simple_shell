@@ -34,10 +34,17 @@ char *handle_path(char *command)
 	if (access(command, X_OK) == 0)
 		return (command);
 	command = _strcat("/", command);
+	if (!command)
+	{
+		free(command);
+		perror("Failed to concat");
+		exit(EXIT_FAILURE);
+	}
 	direc = getenv("PATH");
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
 	if (!d)
 	{
+		free(command);
 		perror("Malloc Fail");
 		exit(EXIT_FAILURE);
 	}
@@ -47,7 +54,11 @@ char *handle_path(char *command)
 	{
 		token = _strcat(token, command);
 		if (access(token, X_OK) == 0)
+		{
+			free(d);
+			free(command);
 			return (token);
+		}
 		token = strtok(NULL, ":");
 	}
 	free(d);
