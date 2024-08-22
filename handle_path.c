@@ -43,7 +43,7 @@ char *handle_path(char *command)
 		perror("Failed to concat");
 		exit(EXIT_FAILURE);
 	}
-	direc = getenv("PATH");
+	direc = get_env("PATH");
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
 	if (!d)
 	{
