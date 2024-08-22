@@ -32,12 +32,6 @@ int main(void)
 		path = handle_path(commands[0]);
 		if (strcmp(path, "N_F") == 0)
 		{
-			fprintf(stderr, "./hsh: 1: %s: not found\n", commands[0]);
-			free(buf);
-			exit(127);
-		}
-		if (strcmp(path, "N_F") == 0)
-		{
 			free(buf);
 			continue;
 		}
