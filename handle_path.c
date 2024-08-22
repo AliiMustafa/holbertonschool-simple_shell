@@ -68,7 +68,7 @@ char *handle_path(char *command)
 		{
 			free(d);
 			free(command1);
-			return (token);
+			return (temp);
 		}
 		free(temp);
 		token = strtok(NULL, ":");
