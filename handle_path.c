@@ -43,17 +43,19 @@ char *handle_path(char *command)
 		perror("Failed to concat");
 		exit(EXIT_FAILURE);
 	}
-	direc = get_env("PATH", command);
-	if (!direc)
+	direc = get_env("PATH");
+	if (strcmp(direc, "(null)") == 0)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
 		free(command);
+		free(direc);
 		exit(127);
 	}
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
 	if (!d)
 	{
 		free(command);
+		free(direc);
 		perror("Malloc Fail");
 		exit(EXIT_FAILURE);
 	}

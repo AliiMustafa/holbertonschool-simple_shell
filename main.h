@@ -14,5 +14,5 @@ extern char **environ;
 
 char *trim(char *string);
 char *handle_path(char *command);
-char *get_env(char *path, char *command);
+char *get_env(char *path);
 #endif
