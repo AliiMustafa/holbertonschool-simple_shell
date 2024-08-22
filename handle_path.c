@@ -30,9 +30,8 @@ char *_strcat(char *str1, char *str2)
 char *handle_path(char *command)
 {
 	char *direc, *token, *d;
-	struct stat st;
 
-	if (stat(command, &st) == 0)
+	if (access(command, X_OK) == 0)
 		return (command);
 	command = _strcat("/", command);
 	direc = getenv("PATH");
@@ -47,7 +46,7 @@ char *handle_path(char *command)
 	while (token)
 	{
 		token = _strcat(token, command);
-		if (stat(token, &st) == 0)
+		if (access(token, X_OK) == 0)
 			return (token);
 		token = strtok(NULL, ":");
 	}
