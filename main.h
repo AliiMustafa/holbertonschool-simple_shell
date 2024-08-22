@@ -11,5 +11,6 @@
 #include <errno.h>
 #include <dirent.h>
 char *trim(char *string);
+char *handle_path(char *command);
 
 #endif

@@ -5,7 +5,7 @@
  */
 int main(void)
 {
-	char *buf, *token, *commands[100], *trimmed;
+	char *buf, *token, *commands[100], *trimmed, *path;
 	size_t count, i;
 	pid_t child;
 	int status;
@@ -30,20 +30,15 @@ int main(void)
 			i++;
 		}
 		commands[i] = NULL;
-		if (strcmp(commands[i - 1], "exit") == 0)
-		{
-			free(buf);
-			if (i == 1)
-				exit(0);
-			else
-				exit(2);
-		}
+		path = handle_path(commands[0]);
+		if (!strcmp(path, "N_F"))
+			continue;
 		child = fork();
 		if (child == -1)
 			free(buf), perror("Fork failed"), exit(EXIT_FAILURE);
 		else if (child == 0)
 		{
-			if (execve(commands[0], commands, NULL) == -1)
+			if (execve(path, commands, NULL) == -1)
 				free(buf), perror("we found error"), exit(0);
 		}
 		else
