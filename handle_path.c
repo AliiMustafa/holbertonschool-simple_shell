@@ -44,6 +44,12 @@ char *handle_path(char *command)
 		exit(EXIT_FAILURE);
 	}
 	direc = get_env("PATH");
+	if (!direc)
+	{
+		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
+		free(command);
+		exit(127);
+	}
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
 	if (!d)
 	{
