@@ -15,7 +15,7 @@ char *get_env(char *path)
 		if (strcmp(token, path) == 0)
 		{
 			token = strtok(NULL, "\n");
-			if (!token)
+			if (token == NULL)
 			{
 				free(cpy);
 				return ("(null)");
