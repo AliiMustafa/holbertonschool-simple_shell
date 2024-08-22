@@ -52,6 +52,7 @@ char *handle_path(char *command)
 		exit(EXIT_FAILURE);
 	}
 	strcpy(d, direc);
+	free(direc);
 	token = strtok(d, ":");
 	while (token)
 	{
