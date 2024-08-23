@@ -58,5 +58,5 @@ This project is licensed under the Holberton School.
 
 ## Authors
 
-li Mustafazade
+- Ali Mustafazade
 - Elina Habibova
