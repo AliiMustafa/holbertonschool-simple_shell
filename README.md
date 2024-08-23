@@ -54,9 +54,7 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 
-T
-
-his project is licensed under the Holberton School.
+This project is licensed under the Holberton School.
 
 ## Authors
 
