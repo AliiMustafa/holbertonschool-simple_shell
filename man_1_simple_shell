@@ -1,4 +1,4 @@
-.TH SIMPLE_SHELL 1 "May 2024" "Simple Shell Manual"
+.TH SIMPLE_SHELL 1 "August 2024" "Simple Shell Manual"
 .SH NAME
 simple_shell \- a simple shell implementation
 .SH SYNOPSIS
@@ -25,5 +25,4 @@ To execute a command, simply type the command followed by any arguments:
 .SH SEE ALSO
 bash(1), sh(1)
 .SH AUTHOR
-Kamran Mahmudov <kamurano>
-Samir Ibrahimov <samiribrh>
+
