@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * trim - func
+ * trim - fuc
  * @string: pointer
  * Return: copy of string without spaces
  */
