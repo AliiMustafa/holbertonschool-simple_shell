@@ -1,5 +1,18 @@
 #include "main.h"
 /**
+ * print_env - func for printing rnv
+ */
+void print_env(void)
+{
+	char **env_ptr = environ;
+
+	while (*env_ptr != NULL)
+	{
+		printf("%s\n", *env_ptr);
+		env_ptr++;
+	}
+}
+/**
  * main - entry
  * Return: Always 0
  */
@@ -29,6 +42,11 @@ int main(void)
 			i++;
 		}
 		commands[i] = NULL;
+		if (strcmp(commands[0], "env") == 0)
+		{
+			print_env();
+			continue;
+		}
 		path = handle_path(commands[0]);
 		if (strcmp(path, "N_F") == 0)
 		{

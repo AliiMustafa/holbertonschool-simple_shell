@@ -11,7 +11,7 @@
 #include <errno.h>
 #include <dirent.h>
 extern char **environ;
-
+void print_env(void);
 char *trim(char *string);
 char *handle_path(char *command);
 char *get_env(char *path);
