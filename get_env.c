@@ -27,5 +27,6 @@ char *get_env(char *path)
 		free(cpy);
 		i++;
 	}
+	free(env);
 	return ("(null)");
 }

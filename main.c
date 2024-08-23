@@ -76,6 +76,5 @@ int main(void)
 		free(path);
 		free(buf);
 	}
-
 	return (0);
 }
