@@ -1,6 +1,6 @@
 # Simple Shell
 
-A simple shell implementation in .
+A simple shell implementation in C .
 
 ## Table of Contents
 
