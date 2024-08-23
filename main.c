@@ -16,7 +16,7 @@ void print_env(void)
  * main - entry
  * Return: Always 0
  */
-int main(void)
+nt main(void)
 {
 	char *buf, *token, *commands[100], *trimmed, *path;
 	size_t count, i;
