@@ -2,7 +2,7 @@
 /**
  * print_env - func for printing rnv
  */
-oid print_env(void)
+void print_env(void)
 {
 	char **env_ptr = environ;
 
