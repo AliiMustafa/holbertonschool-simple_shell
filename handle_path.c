@@ -44,7 +44,7 @@ char *handle_path(char *command)
 		exit(EXIT_FAILURE);
 	}
 	direc = get_env("PATH");
-	if (!direc || strcmp(direc, "(null)") == 0)
+	if (strcmp(direc, "(null)") == 0)
 	{
 		fprintf(stderr, "./hsh: 1: %s: not found\n", command);
 		free(command1);

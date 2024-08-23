@@ -66,12 +66,7 @@ int main(void)
 		else if (child == 0)
 		{
 			if (execve(path, commands, environ) == -1)
-			{
-				if (errno == EINVAL)
-					free(path), free(buf), exit(2);
-				else
-					free(path), free(buf), perror("we found error"), exit(0);
-			}
+				free(path), free(buf), perror("we found error"), exit(0);
 		}
 		else
 		{
