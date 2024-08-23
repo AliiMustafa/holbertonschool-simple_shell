@@ -48,6 +48,11 @@ int main(void)
 			free(buf);
 			continue;
 		}
+		if (strcmp(commands[0], "exit") == 0)
+                {
+			free(buf);
+			exit(0);
+                }
 		path = handle_path(commands[0]);
 		if (strcmp(path, "N_F") == 0)
 		{
@@ -61,7 +66,12 @@ int main(void)
 		else if (child == 0)
 		{
 			if (execve(path, commands, NULL) == -1)
-				free(path), free(buf), perror("we found error"), exit(0);
+			{
+				if (errno == EINVAL)
+					free(path), free(buf), exit(2);
+				else
+					free(path), free(buf), perror("we found error"), exit(0);
+			}
 		}
 		else
 		{
