@@ -45,6 +45,7 @@ int main(void)
 		if (strcmp(commands[0], "env") == 0)
 		{
 			print_env();
+			free(buf);
 			continue;
 		}
 		path = handle_path(commands[0]);
