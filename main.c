@@ -65,7 +65,7 @@ int main(void)
 			free(path), free(buf), perror("Fork failed"), exit(EXIT_FAILURE);
 		else if (child == 0)
 		{
-			if (execve(path, commands, NULL) == -1)
+			if (execve(path, commands, environ) == -1)
 			{
 				if (errno == EINVAL)
 					free(path), free(buf), exit(2);
