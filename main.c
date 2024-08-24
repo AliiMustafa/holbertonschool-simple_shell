@@ -64,7 +64,7 @@ int main(void)
 {
 	char *buf, *token, *commands[100], *trimmed, *path;
 	size_t count, i;
-	int status;
+	int status = 0;
 
 	while (1)
 	{
