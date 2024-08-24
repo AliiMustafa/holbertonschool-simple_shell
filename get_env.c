@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * get_env - function
- * @path - string
+ * @path: string
  * Return: stiring
  */
 char *get_env(char *path)
