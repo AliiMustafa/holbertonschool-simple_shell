@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * get_env - function
+ * @path - string
+ * Return: stiring
+ */
 char *get_env(char *path)
 {
 	int i = 0;
