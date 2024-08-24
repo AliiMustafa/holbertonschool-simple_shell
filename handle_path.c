@@ -31,15 +31,15 @@ char *handle_path(char *command)
 {
 	char *direc, *token, *d, *c, *command1, *temp;
 
+	if (access(command, X_OK) == 0 && strchr(command, '/') != NULL)
+	{
+		c = malloc(sizeof(char) * (strlen(command) + 1));
+		strcpy(c, command);
+		return (c);
+	}
 	direc = get_env("PATH");
         if (strcmp(direc, "(null)") == 0)
                 return ("N_F");
-	if (access(command, X_OK) == 0)
-	{
-		c = malloc(sizeof(char) * (strlen(command) + 1));
-		strcpy(c, command), free(direc);
-		return (c);
-	}
 	command1 = _strcat("/", command);
 	if (!command1)
 	{
