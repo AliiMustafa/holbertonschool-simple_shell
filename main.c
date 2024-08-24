@@ -1,63 +1,6 @@
 #include "main.h"
 /**
- * print_env - func for printing rnv
- */
-void print_env(void)
-{
-	char **env_ptr = environ;
-
-	while (*env_ptr != NULL)
-	{
-		printf("%s\n", *env_ptr);
-		env_ptr++;
-	}
-}
-/**
- * built_in_exit - function
- * @commands: double pointer
- * @buf: string
- * @status: pointer
- */
-void built_in_exit(char **commands, char *buf, int *status)
-{
-	if (strcmp(commands[0], "exit") == 0)
-	{
-		free(buf);
-		if (*status != 2)
-			exit(0);
-		exit(*status);
-	}
-}
-/**
- * _fork - function
- * @path: string
- * @buf: string
- * @commands: double pointer
- * @status: pointer
- */
-void _fork(char *path, char *buf, char **commands, int *status)
-{
-	pid_t child;
-
-	child = fork();
-	if (child == -1)
-		free(path), free(buf), perror("Fork failed"), exit(EXIT_FAILURE);
-	else if (child == 0)
-	{
-		*status = execve(path, commands, environ);
-		if (*status == -1)
-			free(path), free(buf), perror("we found error"), exit(0);
-	}
-	else
-	{
-		if (wait(status) == -1)
-			free(path), free(buf), perror("wait has failed"), exit(0);
-		*status = WEXITSTATUS(*status);
-	}
-
-}
-/**
- * main - entry
+ * main - function
  * Return: Always 0
  */
 int main(void)
