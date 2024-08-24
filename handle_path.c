@@ -31,23 +31,21 @@ char *handle_path(char *command)
 {
 	char *direc, *token, *d, *c, *command1, *temp;
 
+	direc = get_env("PATH");
+        if (strcmp(direc, "(null)") == 0)
+                return ("N_F");
 	if (access(command, X_OK) == 0)
 	{
 		c = malloc(sizeof(char) * (strlen(command) + 1));
-		strcpy(c, command);
+		strcpy(c, command), free(direc);
 		return (c);
 	}
 	command1 = _strcat("/", command);
 	if (!command1)
 	{
+		free(direc);
 		perror("Failed to concat");
 		exit(EXIT_FAILURE);
-	}
-	direc = get_env("PATH");
-	if (strcmp(direc, "(null)") == 0)
-	{
-		free(command1);
-		return ("N_F");
 	}
 	d = malloc(sizeof(char) * (strlen(direc) + 1));
 	if (!d)
