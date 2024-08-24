@@ -8,6 +8,7 @@ char *trim(char *string)
 {
 	char *cpy;
 	int count = 0, i = 0, j = 0;
+
 	while (string[j])
 		j++;
 	cpy = malloc(sizeof(char) * (j + 1));
